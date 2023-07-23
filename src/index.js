@@ -1,7 +1,7 @@
 const express = require('express');
 const { PORT } = require('./config/server-config');
 const connect = require('./config/database');
-const TweetRepository = require('./reps/tweet-repository')
+const TweetRepository = require('./repository/tweet-repository')
 const Comment = require('./models/comment');
 const Tweet = require('./models/tweet');
 const repo = new TweetRepository();
