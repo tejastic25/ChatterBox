@@ -9,18 +9,21 @@ const tweetSchema = new mongoose.Schema({
     userEmail: {
         type: String
     },
-    comments: [
+    hashtags: [
         {
-            content: {
-                // type: mongoose.Schema.Types.ObjectId,
-                type: String,
-                ref: 'Comment'
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Hashtags'
         }
+
     ]
 
 }, { timestamps: true });
 
+tweetSchema.virtual('contentWithEmail').get(function () {
+    return `${this.content} \nwritten by : ${this.userEmail}`;
+});
+
+//can apply hooks
 const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;
 
