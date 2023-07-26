@@ -6,13 +6,7 @@ const tweetSchema = new mongoose.Schema({
     },
     userEmail: {
         type: String
-    },
-    hashtags: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Hashtag'
-        }
-    ]
+    }
 
 }, { timestamps: true });
 

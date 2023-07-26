@@ -39,10 +39,10 @@ class HashtagRepository {
             throw error;
         }
     }
-    async getByName(titleLiist) {
+    async getByName(titleList) {
         try {
             const tag = await Hashtag.find({
-                title: titleLiist
+                title: titleList
             });
             return tag;
         } catch (error) {

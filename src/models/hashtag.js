@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-
-
 const hashtagsSchema = new mongoose.Schema({
     title: {
         type: String,

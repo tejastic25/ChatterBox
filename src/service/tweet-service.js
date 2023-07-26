@@ -9,13 +9,15 @@ class TweetService {
     async create(data) {
         try {
             const content = data.content;
-            const hashtags = content.match(/#[a-zA-Z0-9_]+/g).map((tag) => tag.substring(1));
-            const hashtagsTitle = hashtags;
+            const hashtagsTitle = await content.match(/#[a-zA-Z0-9_]+/g)
+                .map((tag) => tag.substring(1))
+                .map((tag) => tag.toLowerCase());
+
             const tweet = await this.respository.create(data);// created tweet
             // filtering already present and new hashtags
             const alreadyPresentTags = await this.hashrepo.getByName(hashtagsTitle);
             let titleOfPresenttags = alreadyPresentTags.map(tags => tags.title);
-            let newTags = hashtags.filter((tag) => !titleOfPresenttags.includes(tag));
+            let newTags = hashtagsTitle.filter((tag) => !titleOfPresenttags.includes(tag));
             newTags = newTags.map(tag => {
                 return { title: tag, tweets: [tweet.id] }
             });
