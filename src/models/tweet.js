@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
@@ -12,9 +10,8 @@ const tweetSchema = new mongoose.Schema({
     hashtags: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Hashtags'
+            ref: 'Hashtag'
         }
-
     ]
 
 }, { timestamps: true });

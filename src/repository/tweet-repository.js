@@ -36,9 +36,10 @@ class TweetRepository {
             console.log(error);
         }
     }
-    async getWithComments(id) {
+
+    async getWithHashtags(id) {
         try {
-            const tweet = await Tweet.findById(id).populate('comments');
+            const tweet = await Tweet.findById(id).populate('hashtags');
             return tweet;
         } catch (error) {
             console.log(error);
