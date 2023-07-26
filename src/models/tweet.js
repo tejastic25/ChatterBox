@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
@@ -22,5 +22,5 @@ tweetSchema.virtual('contentWithEmail').get(function () {
 
 //can apply hooks
 const Tweet = mongoose.model('Tweet', tweetSchema);
-module.exports = Tweet;
+export default Tweet;
 
