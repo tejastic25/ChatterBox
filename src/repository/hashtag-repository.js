@@ -1,15 +1,10 @@
 import Hashtag from '../models/hashtag.js';
+import CrudRepository from './crud-repository.js';
 
-class HashtagRepository {
+class HashtagRepository extends CrudRepository {
 
-    async create(data) {
-        try {
-            const tag = await Hashtag.create(data);
-            return tag;
-        } catch (error) {
-            console.log("something went wrong in the repository layer");
-            throw error;
-        }
+    constructor() {
+        super(Hashtag);
     }
 
     async bulkCreate(data) {
@@ -21,6 +16,7 @@ class HashtagRepository {
             throw error;
         }
     }
+
     async getById(id) {
         try {
             const tag = await Hashtag.find(id);
@@ -30,6 +26,7 @@ class HashtagRepository {
             throw error;
         }
     }
+
     async delete(id) {
         try {
             const tag = await Hashtag.findByIdAndRemove(id);
@@ -39,6 +36,7 @@ class HashtagRepository {
             throw error;
         }
     }
+
     async getByName(titleList) {
         try {
             const tag = await Hashtag.find({
@@ -50,6 +48,7 @@ class HashtagRepository {
             throw error;
         }
     }
+
     async getWithTweets(id) {
         try {
             const tweets = await Hashtag.findById(id).populate('tweets');

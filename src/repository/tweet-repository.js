@@ -1,31 +1,9 @@
 import Tweet from '../models/tweet.js';
-class TweetRepository {
+import CrudRepository from './crud-repository.js';
+class TweetRepository extends CrudRepository {
 
-    async create(data) {
-        try {
-            const tweet = await Tweet.create(data);
-            return tweet;
-        } catch (error) {
-            console.log("something went wrong in the repository layer");
-        }
-    }
-
-    async get(id) {
-        try {
-            const tweet = await Tweet.findById(id);
-            return tweet;
-        } catch (error) {
-            console.log("something went wrong in the repository layer");
-        }
-    }
-
-    async delete(id) {
-        try {
-            const tweet = await Tweet.findByIdAndDelete(id)
-            return tweet;
-        } catch (error) {
-            console.log("something went wrong in the repository layer");
-        }
+    constructor() {
+        super(Tweet);
     }
 
     async getAll(offset, limit) {
@@ -48,3 +26,4 @@ class TweetRepository {
 
 }
 export default TweetRepository;
+
