@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const likeSchema = await mongoose.Schema({
     OnModel: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         require: true,
         enum: ['Tweet', 'Comment']
     },

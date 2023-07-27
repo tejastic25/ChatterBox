@@ -1,14 +1,16 @@
-
 class CrudRepository {
+
     constructor(model) {
         this.model = model;
     }
+    
     async create(data) {
         try {
             const result = await this.model.create(data);
             return result;
         } catch (error) {
             console.log("something went wrong in the repository layer");
+            console.log(error);
         }
     }
 

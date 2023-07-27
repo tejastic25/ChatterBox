@@ -3,10 +3,11 @@ import { PORT } from './config/server-config.js';
 import connect from './config/database.js';
 import bodyParser from 'body-parser';
 import apiroutes from './routes/index.js';
-// const router = express.Router();
+
 
 const PrepareAndStartServer = async () => {
     const app = express();
+    await connect();
 
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
@@ -20,7 +21,6 @@ const PrepareAndStartServer = async () => {
 
     app.listen(PORT, async () => {
         console.log(`server started on PORT : ${PORT}`);
-        await connect();
         console.log("mongo db started");
     });
 }

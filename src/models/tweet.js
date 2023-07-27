@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
@@ -6,7 +6,13 @@ const tweetSchema = new mongoose.Schema({
     },
     userEmail: {
         type: String
-    }
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Like'
+        }
+    ]
 
 }, { timestamps: true });
 

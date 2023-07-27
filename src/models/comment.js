@@ -7,7 +7,8 @@ const commentSchema = new mongoose.Schema({
         required: true
     },
     userEmail: {
-        type: String
+        type: String,
+        
     }
 
 }, { timestamps: true });
