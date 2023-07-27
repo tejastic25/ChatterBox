@@ -30,7 +30,8 @@ class TweetService {
 
         } catch (error) {
 
-            console.log("something went wrong in the service layer")
+            console.log("something went wrong in the service layer");
+            console.log(error);
             throw error;
 
         }
