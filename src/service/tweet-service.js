@@ -6,6 +6,7 @@ class TweetService {
         this.respository = new TweetRepository();
         this.hashrepo = new HashtagRepository();
     }
+
     async create(data) {
         try {
             const content = data.content;
@@ -34,6 +35,16 @@ class TweetService {
             console.log(error);
             throw error;
 
+        }
+    }
+    async getTweet(tweetId) {
+        try {
+            const tweet = await this.respository.getWithComments(tweetId);
+            return tweet;
+        } catch (error) {
+            console.log("something went wrong in the service layer");
+            console.log(error);
+            throw error;
         }
     }
 }

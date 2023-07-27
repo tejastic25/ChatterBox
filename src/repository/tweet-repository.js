@@ -16,15 +16,21 @@ class TweetRepository extends CrudRepository {
         }
     }
 
-    async getWithHashtags(id) {
+    async getWithComments(id) {
         try {
-            const tweet = await Tweet.findById(id).populate('hashtags');
+            const tweet = await Tweet.findById(id).populate({
+                path: 'comments',
+                populate: {
+                    path: 'comments'
+                }
+            });
             return tweet;
         } catch (error) {
             console.log("something went wrong in the repository layer");
             console.log(error);
         }
     }
+
     async find(id) {
 
         try {

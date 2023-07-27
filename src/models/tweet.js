@@ -4,13 +4,16 @@ const tweetSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userEmail: {
-        type: String
-    },
     likes: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Like'
+        }
+    ],
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
         }
     ]
 
