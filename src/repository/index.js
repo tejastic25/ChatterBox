@@ -6,7 +6,6 @@ import CommentRepository from './comment-repository.js';
 export {
     HashtagRepository, TweetRepository,
     LikeRepository, UserRepository, CommentRepository
-
 }
 
 
