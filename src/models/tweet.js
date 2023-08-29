@@ -1,29 +1,30 @@
-import mongoose, { mongo } from 'mongoose';
-const tweetSchema = new mongoose.Schema({
+import mongoose, { mongo } from "mongoose";
+const tweetSchema = new mongoose.Schema(
+  {
     content: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     likes: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Like'
-        }
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like",
+      },
     ],
     comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
-        }
-    ]
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
-}, { timestamps: true });
-
-tweetSchema.virtual('contentWithEmail').get(function () {
-    return `${this.content} \nwritten by : ${this.userEmail}`;
+tweetSchema.virtual("contentWithEmail").get(function () {
+  return `${this.content} \nwritten by : ${this.userEmail}`;
 });
 
 //can apply hooks
-const Tweet = mongoose.model('Tweet', tweetSchema);
+const Tweet = mongoose.model("Tweet", tweetSchema);
 export default Tweet;
-

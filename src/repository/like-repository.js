@@ -21,4 +21,4 @@ export default LikeRepository;
 
 
 // wehenever someone likes a tweet there is an like object created under like model
-// then also in that tweet -> id of that like object will be added 
+// then also in that tweets like atrribute array -> id of that like object will be added 
