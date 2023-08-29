@@ -13,7 +13,7 @@ router.get("/tweets/:id", TweetController.getTweet);
 router.post("/tweets/toggle", LikeController.toggleLike); // toggle like on a tweet
 
 //comments
-router.post("/comments", CommentController.create);
+router.post("/comments", authenticate, CommentController.create);
 
 //Authentication
 router.post("/signUp", AuthController.signUp);
